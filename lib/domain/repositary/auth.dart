@@ -8,4 +8,5 @@ abstract class AuthRepositary {
 
   Future<Either> getAges();
   Future<Either> sendPasswordResetEmail(String email);
+  Future<bool> isLoggedIn();
 }
