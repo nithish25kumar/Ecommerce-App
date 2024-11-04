@@ -1,13 +1,16 @@
 import 'package:ecommerce/common/helper/navigator/app_navigator.dart';
 import 'package:ecommerce/common/widgets/appbar/app_bar.dart';
 import 'package:ecommerce/common/widgets/button/basic_app_button.dart';
+import 'package:ecommerce/data/auth/models/user_signin_req.dart';
 import 'package:ecommerce/presentation/auth/pages/enter_password.dart';
 import 'package:ecommerce/presentation/auth/pages/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+  SigninPage({super.key});
+
+  final TextEditingController _emailCon = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +50,22 @@ class SigninPage extends StatelessWidget {
   }
 
   Widget _emailField(BuildContext context) {
-    return const TextField(
-      decoration: InputDecoration(hintText: 'Enter Email'),
+    return TextField(
+      controller: _emailCon,
+      decoration: const InputDecoration(hintText: 'Enter Email'),
     );
   }
 
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
         onPressed: () {
-          AppNavigator.push(context, const EnterPasswordPage());
+          AppNavigator.push(
+              context,
+              EnterPasswordPage(
+                signinReq: UserSigninReq(
+                  email: _emailCon.text,
+                ),
+              ));
         },
         title: 'Continue');
   }
@@ -64,7 +74,7 @@ class SigninPage extends StatelessWidget {
     return RichText(
       text: TextSpan(children: [
         const TextSpan(
-            text: "Don't you have an Account? ",
+            text: "Don't you have an account? ",
             style: TextStyle(color: Colors.white)),
         TextSpan(
             text: 'Create one',
@@ -73,7 +83,7 @@ class SigninPage extends StatelessWidget {
                 AppNavigator.push(context, SignupPage());
               },
             style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold))
+                fontWeight: FontWeight.bold, color: Colors.white))
       ]),
     );
   }

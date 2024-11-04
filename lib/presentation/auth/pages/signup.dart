@@ -21,35 +21,38 @@ class SignupPage extends StatelessWidget {
       appBar: const BasicAppbar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _siginText(),
-            const SizedBox(
-              height: 20,
-            ),
-            _firstNameField(),
-            const SizedBox(
-              height: 20,
-            ),
-            _lastNameField(),
-            const SizedBox(
-              height: 20,
-            ),
-            _emailField(),
-            const SizedBox(
-              height: 20,
-            ),
-            _passwordField(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _continueButton(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _createAccount(context)
-          ],
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _siginText(),
+              const SizedBox(
+                height: 20,
+              ),
+              _firstNameField(),
+              const SizedBox(
+                height: 20,
+              ),
+              _lastNameField(),
+              const SizedBox(
+                height: 20,
+              ),
+              _emailField(),
+              const SizedBox(
+                height: 20,
+              ),
+              _passwordField(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _continueButton(context),
+              const SizedBox(
+                height: 20,
+              ),
+              _createAccount(context)
+            ],
+          ),
         ),
       ),
     );

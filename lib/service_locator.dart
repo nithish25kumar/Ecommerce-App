@@ -1,7 +1,9 @@
 import 'package:ecommerce/data/auth/repositary/auth_repositary_impl.dart';
 import 'package:ecommerce/data/auth/source/auth_firebase_service.dart';
 import 'package:ecommerce/domain/auth/usecases/get_ages.dart';
+import 'package:ecommerce/domain/auth/usecases/send_password_reset_email.dart';
 import 'package:ecommerce/domain/auth/usecases/siginup.dart';
+import 'package:ecommerce/domain/auth/usecases/signin.dart';
 import 'package:ecommerce/domain/repositary/auth.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,4 +16,7 @@ Future<void> initializeDependencies() async {
   //Usecase
   sl.registerSingleton<SignupUseCase>(SignupUseCase());
   sl.registerSingleton<GetAgesUseCase>(GetAgesUseCase());
+  sl.registerSingleton<SigninUseCase>(SigninUseCase());
+  sl.registerSingleton<SendPasswordResetEmailUseCase>(
+      SendPasswordResetEmailUseCase());
 }
