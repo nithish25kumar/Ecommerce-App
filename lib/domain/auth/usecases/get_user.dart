@@ -4,9 +4,9 @@ import 'package:ecommerce/service_locator.dart';
 
 import '../repositary/auth.dart';
 
-class GetAgesUseCase implements Usecase<Either, dynamic> {
+class GetUserUseCase implements Usecase<Either, dynamic> {
   @override
   Future<Either> call({dynamic params}) async {
-    return await sl<AuthRepositary>().getAges();
+    return await sl<AuthRepositary>().getUser();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/usecase/usecase.dart';
-import 'package:ecommerce/domain/repositary/auth.dart';
 import 'package:ecommerce/service_locator.dart';
+
+import '../repositary/auth.dart';
 
 class IsLoggedInUseCase implements Usecase<bool, dynamic> {
   @override
