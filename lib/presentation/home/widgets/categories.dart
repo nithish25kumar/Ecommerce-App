@@ -24,7 +24,7 @@ class Categories extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                _categories(state.categories)
+                _categories()
               ],
             );
           }
@@ -56,36 +56,57 @@ class Categories extends StatelessWidget {
     );
   }
 
-  Widget _categories(List<CategoryEntity> categories) {
+  Widget _categories() {
+    List<String> categoryImages = [
+      'assets/images/watch2.jpeg',
+      'assets/images/brown-bag.webp',
+      'assets/images/shoe.webp',
+      'assets/images/cosmetic.jpg',
+      'assets/images/blog-2.jpg',
+    ];
+
+    List<String> categoryNames = [
+      'Watches',
+      'Bags',
+      'Shoes',
+      'Cosmetics',
+      'Accessories',
+    ];
+
     return SizedBox(
       height: 100,
       child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          itemBuilder: (contetx, index) {
-            return Column(
-              children: [
-                Container(
-                  height: 60,
-                  width: 60,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(categoryImages[index]),
+                    // Load image from assets
+                    fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  categories[index].title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w400, fontSize: 14),
-                )
-              ],
-            );
-          },
-          separatorBuilder: (context, index) => SizedBox(width: 15),
-          itemCount: categories.length),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                categoryNames[index], // Display the category name
+                style:
+                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              ),
+            ],
+          );
+        },
+        separatorBuilder: (context, index) => const SizedBox(width: 15),
+        itemCount: categoryImages.length,
+      ),
     );
   }
 }

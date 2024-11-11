@@ -1,9 +1,11 @@
 import 'package:ecommerce/core/configs/theme/app_colors.dart';
 import 'package:ecommerce/domain/product/entity/product.dart';
-import 'package:ecommerce/presentation/home/bloc/top_selling_display_cubit.dart';
-import 'package:ecommerce/presentation/home/bloc/top_selling_display_state.dart';
+import 'package:ecommerce/domain/product/usecases/get_top_selling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../common/bloc/product/products_display_cubit.dart';
+import '../../../common/bloc/product/products_display_state.dart';
+import '../../../service_locator.dart';
 
 class TopSelling extends StatelessWidget {
   const TopSelling({super.key});
@@ -11,8 +13,10 @@ class TopSelling extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TopSellingDisplayCubit()..displayProducts(),
-      child: BlocBuilder<TopSellingDisplayCubit, TopSellingDisplayState>(
+      create: (context) =>
+          ProductsDisplayCubit(useCase: sl<GetTopSellingUseCase>())
+            ..displayProducts(),
+      child: BlocBuilder<ProductsDisplayCubit, ProductsDisplayState>(
         builder: (context, state) {
           if (state is ProductsLoading) {
             return const CircularProgressIndicator();
@@ -71,10 +75,17 @@ class TopSelling extends StatelessWidget {
                     flex: 4,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8))),
+                        color: Colors.white,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'assets/images/watch3.jpg'), // Load image from assets
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                   Expanded(
@@ -85,7 +96,7 @@ class TopSelling extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Mens Harrington Jacket',
+                            'Rolex 126603 Sea Dweller ',
                             style: TextStyle(
                                 fontSize: 12, fontWeight: FontWeight.w300),
                           ),

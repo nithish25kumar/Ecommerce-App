@@ -18,7 +18,17 @@ Widget _profileImage() {
   return Container(
     height: 40,
     width: 40,
-    decoration: const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color:
+          Colors.white, // Optional: You can keep a background color if needed
+    ),
+    child: ClipOval(
+      child: Image.asset(
+        'assets/images/profile.png',
+        fit: BoxFit.cover, // Ensures the image fits within the circle
+      ),
+    ),
   );
 }
 
@@ -36,7 +46,16 @@ Widget _card() {
   return Container(
     height: 40,
     width: 40,
-    decoration:
-        const BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+    decoration: const BoxDecoration(
+      color: AppColors.primary,
+      shape: BoxShape.circle,
+    ),
+    child: Center(
+      child: SvgPicture.asset(
+        'assets/vectors/bag.svg',
+        height: 24, // Adjust the height as needed
+        width: 24, // Adjust the width as needed
+      ),
+    ),
   );
 }
