@@ -1,4 +1,6 @@
 import 'package:ecommerce/common/bloc/categories/categories_display_cubit.dart';
+import 'package:ecommerce/common/helper/navigator/app_navigator.dart';
+import 'package:ecommerce/presentation/all_categories/pages/all_categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +47,9 @@ class Categories extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              AppNavigator.push(context, const AllCategoriesPage());
+            },
             child: Text(
               'See All',
               style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),

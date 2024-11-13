@@ -1,6 +1,7 @@
 import 'package:ecommerce/presentation/home/widgets/header.dart';
 import 'package:ecommerce/presentation/home/widgets/new_in.dart';
 import 'package:ecommerce/presentation/home/widgets/top_selling.dart';
+import 'package:ecommerce/presentation/search/pages/search.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/categories.dart';
